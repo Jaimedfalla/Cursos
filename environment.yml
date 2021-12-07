@@ -1,0 +1,7 @@
+name: py310
+channels:
+  - defaults
+dependencies:
+  - pandas
+  - python
+prefix: /home/jefallac/anaconda3/envs/py310
