@@ -1,0 +1,38 @@
+ClassDiagram{
+
+    class AdoptionCenter{
+        private name:String
+        private principal:String
+        private address:String
+    }
+
+    class AdoptionApplication{
+        private date:Date
+    }
+
+    abstract class Pet{
+        private name:String
+        private age:Integer
+        private breed:String
+
+        public hacerSonido()
+    }
+
+    class Parrot{}
+    class Cat{}
+    class Hamster{}
+    class Dog{}
+
+    class Owner{
+        public getPet(request:AdoptionApplication);
+    }
+
+    Pet "0" -c-> "1...*" AdoptionCenter
+    AdoptionApplication "0...*" -a-> "1...*" AdoptionCenter
+    Pet "0...*" -c-> "1" AdoptionApplication
+    Parrot -g-> Pet
+    Cat -g-> Pet
+    Hamster -g-> Pet
+    Dog -g-> Pet
+    Pet "0...1" -a-> "0...*" Owner
+}
