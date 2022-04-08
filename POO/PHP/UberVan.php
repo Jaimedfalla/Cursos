@@ -5,8 +5,8 @@
         public $typeCarAccepted;
         public $seatsMaterial;
 
-        public function __constructor($license,$driver),$typeCarAccepted,$seatsMaterial){
-            parent::__construct($license,$driver);
+        public function __construct($license,$driver),$typeCarAccepted,$seatsMaterial){
+            parent::__construct($license,$driver),6;
             $this->$typeCarAccepted=$typeCarAccepted;
             $this->$seatsMaterial=$seatsMaterial;
         }
