@@ -47,3 +47,19 @@ Para configurar un repositorio de Github, seguir esta [documentación](https://w
 ## Jenkins Slaves
 
 Permiten correr los jobs de manera distribuída. Permiten escalar horizontalmente.
+
+# CONTINUOUS INTEGRATION (CI)
+
+![](/DevOps/images/CI.png)
+<h6>Tomado de: <a href="https://platzi.com/cursos/devops/">Curso Profesional de DevOps - Plazti</a></h6>
+
+Para tener un proceso de CI, lo primero que se requiere es un repositorio de control de código fuente o sistema de control de versiones.
+
+1. Control de versiones
+2. Test Unitarios / Integration Test
+3. Análisis de código, para tener un código limpio
+4. Code Coverage
+
+La salida del CI, es un Artefact
+
+> [Hoja de ruta para aprender DevOps](https://roadmap.sh/devops)
