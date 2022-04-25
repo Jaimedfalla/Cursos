@@ -2,7 +2,7 @@
 
 Javascript surge por la necesidad de generar dinamismo en las páginas web en los inicios de la Internet. Para que las páginas generaran interacción con los usuarios.
 
-Javascript es un lenguaje orientado a la web, interpretado, orientado a objetos, débilmente tipado y dinámico.
+Javascript es un lenguaje orientado a la web, interpretado, orientado a objetos, débilmente tipado y dinámico que corre sobre un motor de javascript.
 
 JIT -> *Just in Time Compiler* lo que hace es traducir el código javascript a código que entiende la máquina.
 
@@ -55,85 +55,51 @@ __*Hoisting:*__ Es cuando las variables y las funciones se utilizan antes de dec
 
 *Rta:* Una función, en su lógica interna si puede contener condicionales.
 
+> Cuando el navegador genera el DOM y lo carga, se genera el evento *DOMContentLoaded, por esta razón, cuando se incluye código JS dentro del Html, el navegador se detiene para cargar y ejecutar este código que se encuentra dentro de las etiquetas script, afectando el rendimiento de la página.
+
+Para optimizar lo anteriormente descrito, existen 2 prácticas altamente recomendadas.
+
+1. Agregar la etiqueta script al final de todo el código html
+2. incluir el atributo `async` a la etiqueta script para que la carga del script js, se realice de manera asíncrona, cuando la carga del script se termina, la carga del html se detiene para ejecutar el script.
+
+Con el atributo `defer` se difiere la ejecución del javascript hasta el final de la carga del html. Este atributo, incluye la funcionalidad del async, lo que quiere decir que el script se carga de manera asíncrona y se ejecuta hasta el final de la carga del html.
+
+### __Scope__:
+Es el tiempo de vida de una variable. Evita que se reescriba el valor de una variable que se haya definido.
+
+<u>Global scope:</u> Es el scope de toda variable que se encuentra por fuera de una función y de un bloque. Ese scope es `window`
+
+<u>Function scope:</u>
+
+<u>Block scope:</u>
+
+<u>Module scope:</u>El scope de una variable está definido al archivo donde está definida. Para indicar este scope, se agrega el atributo `type="module"`
+
+> IIFE: Inmediatly Invoke Function Expresion. Un ejemplo de esto es
+
+```
+(function(){
+    ...code...
+})();
+```
+
+El modo estricto, se puede habilitar manualmente únicamente añadiendo `'use strict'` Este modo se puede habilitar en cualquier scope.
+
+## Métodos Call, Apply y Bind
+
+
+
 ---
-# VUE JS
+# PROYECTO
 
-Vue Js está pensado para diferentes complejidades
+Para iniciar un proyecto javascript, se escribe en consola sobre la carpeta donde queremos guardar los archivos del proyecto
 
-1. Inherente. La heredada del proyecto
-2. Instrumental. La que se puede controlar. El precio que vamos a pagar.
+    npm init -y
 
-Estas complejidades deben crecer o disminuir a la par.
+En este proyecto se instala live-server para ver los cambios en tiempo real con el siguiente comando
 
-Vue es un framework progresivo, porque nos permite escalar nuestra aplicación de manera progresiva a medida que lo necesitemos. Es orientado a la vista, es decir enfocado a lo visual. Es reactivo, la vista y el código se mantienen sincronizados. El Core está compuesto por:
+`npm i -D live-server`
 
-1. Rendering declarativo. Sincronización del código y la vista.
-2. Sistema de componentes. Pequeños módulos html. Modularización a nivel lógico y nivel físico
+El parámetro `-D` indica que solo se instalará para el ambiente de desarrollo
 
-# INTRODUCCIÓN A VUE JS #
-
-Antes de iniciar, debemos verificar que tengamos instalados los siguientes frameworks
-
-1. [Node Js](https://nodejs.org/es/), para verificar su instalación ejecutamos **node --version**
-2. [NPM](https://www.npmjs.com/), para verificar su instalación ejecutamos **npm --version**
-3. [Vue CLI](https://cli.vuejs.org/)
-4. Editor de Texto. Para nuestro caso utilizamos [Visual Studio Code](https://code.visualstudio.com/)
-
-Una vez instalados los anteriores paquetes o librerías, en una consola debemos ejecutar el comando
-
-> vue create nombre_proyecto
-
-Este comando solicitará que ingresemos la configuración para instalar el proyecto, por lo que tendremos que ingresar la configuración deseada y particular para nuestro proyecto. Una vez confirmada la creación del proyecto, lo abrimos con nuestro editor de texto.
-
-## COMANDOS ##
-
-En una consola de comandos podemos ejecutar los siguientes comandos
-
-Para ejecutar la aplicación localmente
-
->npm run serve
-
-Para compilar la aplicación para producción
-
->npm run build
-
-Para verificar errores en el código
-
->npm run lint
-
-Para tener una interfaz gráfica de usuario y gestionar los proyectos que tengamos en Vue, ejecutamos el siguiente comando 
-
->vue ui
-
-Para agregar un nuevo plugin al proyecto, ejecutamos el siguiente comando
-
->vue add nombre_plugin
-
-## Componentes ##
-
-Cuando un componente necesita que se le pasen datos de su componente padre, se declara una propiedad de la siguiente manera.
-
-    export default{
-        name:'NombreComponente',
-        props:{
-            assets: {
-                type: Array,
-                default: () => []
-            }
-        }
-    }
-
-En el ejemplo anterior, se define la propiedad assest, que es de tipo Array y será por la cual el componente o contenedor padre enviará los datos a este componente.
-
-## Enrutamiento ##
-
-El enrutamiento en las diferentes vistas de la aplicación, se puede gestionar en Vue utilizando el plugin *vue-router*, para instalarlo se ejecuta el siguiente comando
-
->npm i -S vue-router
->npm i -S vue-router@next
-
-El parámetro -S indica que debe agregar la dependencia en el archivo package.json
-
-## Fetch y API ##
-
-Para invocar un servicio, estos deben ser invocados desde el hook created del componente y asignarlo a una propiedad del mismo.
+El proyecto de este curso se encuentra en la esta [ruta](./mediaplayer/)

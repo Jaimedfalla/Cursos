@@ -7,7 +7,34 @@
     <title>Figuras geométricas</title>
 </head>
 <body>
-    <h1>Figuras geométricas</h1>
+    <header>
+        <h1>Figuras geométricas</h1>
+        <p>Curso práctico de javascript</p>
+    </header>
+    <section>
+        <h2>Calcula el área y perímetro de un cuadrado</h2>
+        <form id="form-figura">
+            <label>Seleccione una figura para analizar</label>
+            <div>
+                <input type="radio" value="square" name="shape" id="shape__square" checked>
+                <label for="shape__square">Cuadrado</label>
+            </div>
+            <div>
+                <input type="radio" value="triangle" name="shape" id="shape__triangle">
+                <label for="shape__triangle">Triángulo</label>
+            </div>
+            <div>
+                <input type="radio" value="circle" name="shape" id="shape__circle">
+                <label for="shape__circle">Circulo</label>
+            </div>
+            <label for="lado_figura">¿Cuánto mide cada lado de tu figura?</label>
+            <input type="number" min="1" onkeypress="return event.charCode >= 48"
+                id="lado_figura" required pattern="^[0-9]+$">
+            <button type="button" onclick="calcularPerimetro()">Calcular perímetro</button>
+            <button type="button" onclick="calcularArea()">Calcular área</button>
+        </form>
+    </section>
+    
 
     <script src="./figuras.js"></script>
 </body>

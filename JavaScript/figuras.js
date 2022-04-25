@@ -1,12 +1,22 @@
-console.group("Medidas del cuadrado");
+const nameInput ="lado_figura";
+const ladoCuadrado = document.getElementById(nameInput);
+const pattern = /^\+?\d+$/;
+const formSquare = document.getElementById("form-figura");
+const shape = "square";
 
-const ladoCuadrado = 5;
+$('input[type="radio"]').on('change', (e) => {
 
-console.log(`Los lados del cuadrado miden: ${ladoCuadrado} cm`);
+});
 
-const perimetroCuadrado = ladoCuadrado * 4;
-console.log(`El perímetro del cuadrado es: ${perimetroCuadrado} cm`);   
+let calcularPerimetroCuadrado = () => {
+    if(Math.sign(ladoCuadrado)<1 || !pattern.test(ladoCuadrado))
+    {
+        cleanInput();
+        throw "Invalid value";
+    }
 
-const area = ladoCuadrado * ladoCuadrado;
-console.log(`El área del cuadrado es: ${area} cm^2`);   
-console.groupEnd();
+    let perimeter = ladoCuadrado.value * 4;
+    alert(`El perímetro del cuadrado es: ${perimeter} cm`);
+}
+
+let cleanInput = () => document.getElementById(nameInput).value = "";

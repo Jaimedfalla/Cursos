@@ -27,6 +27,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 *.sh
+node_modules
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -131,3 +132,6 @@ dmypy.json
 
 # other files
 *.pdf
+
+# Media files
+*.mp4
