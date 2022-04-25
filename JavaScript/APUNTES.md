@@ -86,7 +86,48 @@ Es el tiempo de vida de una variable. Evita que se reescriba el valor de una var
 El modo estricto, se puede habilitar manualmente únicamente añadiendo `'use strict'` Este modo se puede habilitar en cualquier scope.
 
 ## Métodos Call, Apply y Bind
+Todas las funciones en JavaScript tienen por defecto unos métodos llamados `call, apply y bind`
 
+Ejemplo de **call**
+
+```
+function saludar(){
+    console.log(`Hola. Soy ${this.name} ${this.apellido}`);
+}
+
+const richard ={
+    name:'Richard',
+    apellido:'Kaufman López'
+}
+
+saludar.call(richard);
+```
+
+> Call permite indicar cual es el objeto o el valor del this.
+
+La función `apply` funciona de una forma similar de call pero sus argumentos se pasan de una forma de diferente.
+
+```
+function caminar(metros, direccion){
+    console.log(`${this.name} camina ${metros} metros hacia ${direccion}.`);
+}
+
+caminar.apply(richard,[800,'noreste']);
+```
+Los argumentos para una función invocada desde `apply` se pasan desde un array.
+
+Ejemplo de la función `bind`
+
+```
+const caminarRichard = saludar.bind(richard,800,'noreste');
+caminarRichard();
+```
+La función `bind` permite pasar los argumentos de forma parcial, por ejemplo.
+
+```
+const caminarRichard = saludar.bind(richard,800);
+caminarRichard('noreste');
+```
 
 
 ---
