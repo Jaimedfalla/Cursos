@@ -32,8 +32,23 @@ MediaPlayer.prototype.unmute = function(){
 }
 
 MediaPlayer.prototype.initPlugins = function(){
+    //Se crea un objeto player para controlar los objetos a los que tiene acceso el plugin
+    const player = {
+        play:()=>this.play(),
+        pause: () => this.pause(),
+        media: this.media,
+        //get
+        get muted(){
+            return this.media.muted;
+        },
+        //set
+        set muted(value){
+            this.media.muted = value;
+        }
+    };
+
     this.plugins.forEach(plugin => {
-        plugin.run(this);
+        plugin.run(player);
     });
 }
 
