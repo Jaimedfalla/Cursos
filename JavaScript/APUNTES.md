@@ -235,7 +235,7 @@ Un ejemplo de commo implementar la cancelación de un fetch es: [abort-fetch](./
 
 Es una nueva herramienta que viene en el DOM y permite observar objetos y su comportamiento
 
-## __Visibility Change__
+## __*Visibility Change*__
 `VisibilityChange` es un evento que tiene el DOM que permite validar si el usuario tiene activa la pestaña en el navegador donde tiene abierta la aplicación.
 
 ## __Service Workers__
@@ -261,6 +261,15 @@ Los tipos primitivos en typescript son:
 - Enums
 - Any
 
+> **NOTA:** Si un tipo no se define utilizando la palabra reservada `class` typescript no lo considera como un tipo
+
+## __*Patrones de Diseño*__
+Los patrones de diseño son soluciones recurrentes bien probadas a problemas recurrentes a los que se enfrenta un desarrollador. Son como recetas para solucionar un problema que es recurrente dentro de un contexto.
+
+Una desventaja de los patrones de diseño, es que agregan complejidad a nuestro software, por lo cual se recomienda tenerlos como última alternativa para la solución de un problema.
+
+> Se recomienda pensar siempre en términos de diseño y no de patrones, porque el uso excesivo de estos pueden hacer de nuestro software poco mantenible por la complejidad
+
 # <span style="color:#aed91a;">PROYECTO</span>
 
 Para iniciar un proyecto javascript, se escribe en consola sobre la carpeta donde queremos guardar los archivos del proyecto
@@ -280,3 +289,5 @@ Para instalar el transpilador que convierte el código typescript a javascript. 
 `npm i -D parcel-bundler`
 
 En caso de generarse algún error, se recomienda eliminar las carpetas ~~`.cache`~~ y la carpeta ~~`dist`~~
+
+> Los `HTMLMediaElement` tienen un evento llamado `timeupdate` el cual permite adicionar un listener para ejecutar una función cada vez que el tiempo del elemento media cambia.
