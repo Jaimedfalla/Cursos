@@ -161,13 +161,18 @@ Algunos optimizadores de código son:
 
 Es lo que hace que javascript parezca multihilo. Para poder entenderlo, es necesario entender como funcionan las estructuras de datos en JS.
 
-- Stack: Funciona como una cola LIFO
-- Memory Heap:
-- Queue
+- Stack: Funciona como una cola LIFO.
+- Memory Heap: Es es el espacio en memoria compartido para la apclicación
+- Queue: Es la cola de tareas 
 
 El eventloop es una rutina que se encuentra entre el stack y la cola de tareas, revisando las tareas que se encuentran en esta última.
 
 Las promesas son tareas que se guardan en una cola similar a la cola de tareas, llamada Cola de microtareas. Las microtareas tienen mayor prioridad de ejecución que las tareas.
+
+> *NOTA:* Se recomendable no hacer funciones tan pesadas que puedan hacer colapsar la cola de tareas porque el eventloop se mantiene ocupado ejecutando una sola función.
+
+## __Callbacks__
+Los callbacks son funciones que se pasan como parámetro a otras funciones. Cumple con el patró delegado.
 
 ## __Promesas__
 ---
