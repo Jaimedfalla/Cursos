@@ -15,3 +15,29 @@
 3. `npx tsc --init`
 4. `npm i ts-node -D`
 5. `npx tsc` <span style="color:#266802">*//Para traspilar el código*</span>
+
+# GENÉRICOS
+
+Los tipos genéricos permiten enviar el tipado como si fueran un parámetro, un ejemplo de esto es:
+
+```typescript
+
+function myFunction<myType>(value:myType){
+    ...code..
+}
+
+myFunction(12).toFixed();
+myFunction('12').toLowerCase();
+myFunction([]).forEach();
+
+```
+
+# DECORADORES
+
+Para el uso de los decoradores, utilizamos [class-validator](https://github.com/typestack/class-validator), para instalarlo:
+
+`npm install class-validator --save`
+
+En el archivo tsconfig, se debe habilitar los decoradores con la propiedad `"experimentalDecorator":true`
+
+Ejemplo de uso de los decoradores [aquí](src/dtos/category.dto.ts]
