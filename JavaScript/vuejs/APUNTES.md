@@ -130,6 +130,7 @@ export default{
 ```
 
 __*TRANSICIONES:*__
+-
 
 Ejemplo de implementación de una transición.
 
@@ -150,6 +151,7 @@ Ejemplo de implementación de una transición.
 Se deben definir los estilos con el mismo nombre que el de la transición, para el ejemplo, todos los estilos deben comentar con `.nombre...{}`
 
 __*TELEPORTS*__
+-
 
 Son una especie de componentes que permite enviar parte de un componente hacia otro. La forma de utilizarlo es:
 
@@ -211,8 +213,167 @@ export default {
     },
 };
 ```
+Dentro de la función `setup` no se puede acceder a ningún elemento del componente con la palabra reservada `this`
+
 __*VARIABLES REACTIVAS*__
+-
 
 Con la función `ref`, se importa del paquete `'vue'` esta función hace que las variables de tipos primitivos sean reactivas.
 
 Para trabajar con objetos reactivos se utiliza la función `reactive`
+
+
+__*COMPUTED*__
+-
+
+Ejemplo de una función computada
+
+```javascript
+<script>
+import{ref,computed} from 'vue';
+
+export default{
+    setup(){
+        const variable = ref('valor');
+
+        const computedVariable =computed(()=>{
+            ...
+            ...variable.value;
+            ...
+            return ...;
+        });
+
+        return{
+            computedVariable,
+            ...
+            ...
+            ...
+        }
+    }
+}
+</script>
+```
+Al trabajar con variables computadas, se debe tener cuidado con la reactividad
+
+__*PROPS*__
+-
+
+Por defecto, el parámetro `props` de la función `setup`no es reactiva. Un ejemplo de uso de props es:
+
+```javascript
+<script>
+import {computed, toRefs} from 'vue';
+
+export default{
+    props:{
+        firstName:String,
+        lastName:String
+    },
+    setup(props){
+        const {firstName,lastName} = toRefs(props);
+
+        const fullName=computed(()=>{
+            return `${firstName} ${lastName}`;
+        });
+
+        return:{
+            fullName
+        }
+    }
+}
+</script>
+```
+
+__*CONTEXT*__
+-
+ Através del parámetro context de la función `setup` vienen los siguientes valores
+
+ 1. *attrs*: Atributos que se envían desde el componente padre como propiedades, pero que no se han definido como propiedades en el hijo.
+
+ 2. *emit*: Los eventos que emite el hijo
+
+ 3. *expose*: Permite exponer las variables de un componente hacia otro componente. La forma de usarla; continuando con el ejemplo anterior, es:
+
+ ```javascript
+ <script>
+    ...
+    setup(props,{expose}){
+
+        expose({
+            fullName
+        });
+    }
+    ...
+</script>
+ ```
+4. *slots*
+
+__*PROVIDE/INJECT*__
+-
+
+Provide inject es la forma que Vue nos ofrece para que un componente se comunique de manera profunda con sus descendientes.
+
+```javascript
+//Componente Padre
+import {provide} from 'vue';
+
+export default{
+    name:"Nombre",
+    components:{
+        ...
+    },
+    setup(){
+        ...
+        //El coomponente padre provee las variables con provide
+        provide("username",...){//Se colocan todos los nombres de las variables
+
+        }
+    },
+}
+
+//Componente Hijo
+<script>
+import {inject} from 'vue';
+
+export default{
+    setup(props,context){
+        const username = inject("username");
+
+        return{
+            username
+        }
+    }
+}
+</script>
+```
+> Por defecto `provide/inject` no es reactiva
+
+__*TEMPLATE REFS*__
+-
+
+Con template `ref` se crean variables reactivas de elementos HMTL. Ejemplo de uso.
+
+```javascript
+<template>
+    <button ref="btn">Botón</button>
+</template>
+<script>
+import {ref,watch} from 'vue';
+export default{
+    setup(prop,context){
+        const btn = ref(null);
+
+        watch(btn,(valor)=>{
+            console.log(valor);//La salida de este watch es <button>Botón</button>
+        })
+    },
+    return{
+        btn
+    }
+}
+</script>
+```
+
+__*COMPOSITION VS OPTIONS*__
+-
+
