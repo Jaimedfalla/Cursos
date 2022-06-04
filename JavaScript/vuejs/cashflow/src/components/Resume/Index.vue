@@ -1,7 +1,7 @@
 <template>
     <main>
         <p>{{labelVisual}}</p>
-        <h1>{{amountCurrency}}</h1>
+        <h1>{{$filters.amountCurrency(amountVisual)}}</h1>
         <div class="graphic">
           <slot name="graphic"></slot>
         </div>
@@ -20,14 +20,7 @@ const props = defineProps({
     },
     totalAmount:Number
 });
-const currencyFormatter = new Intl.NumberFormat('es-CO',{
-  style:'currency',currency:'COP'
-});
-
 const amountVisual = computed(()=>props.amount !==null?props.amount:props.totalAmount);
-const amountCurrency = computed(()=>{
-  return currencyFormatter.format(amountVisual.value)
-});
 const labelVisual = computed(()=> props.label !==null?props.label:'Ahorro Total')
 </script>
 <style scoped>
