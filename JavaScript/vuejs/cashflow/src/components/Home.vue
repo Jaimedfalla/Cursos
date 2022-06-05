@@ -6,7 +6,7 @@
         <template #resume>
             <Resume :label="'Mi Ahorro'" :total-amount="amount">
                 <template #graphic>
-                    graphic
+                    <Graphic :amounts="amounts"/>
                 </template>
                 <template #action>
                     <Action></Action>
@@ -25,6 +25,7 @@ import Resume from './Resume/Index.vue';
 import Movements from './Movements/Index.vue';
 import { ref } from 'vue';
 import Action from './Action.vue';
+import Graphic from './Resume/Graphic.vue'
 
 const amount = ref(2000000);
 const movements = [
@@ -41,4 +42,5 @@ const movements = [
         amount:-50552
     }
 ];
+const amounts = [100,200,500,200,-400,-600,-300,0,300,500];
 </script>
