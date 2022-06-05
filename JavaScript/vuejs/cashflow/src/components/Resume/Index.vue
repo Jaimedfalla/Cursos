@@ -5,6 +5,9 @@
         <div class="graphic">
           <slot name="graphic"></slot>
         </div>
+        <div class="action">
+          <slot name="action"></slot>
+        </div>
     </main>
 </template>
 <script setup>

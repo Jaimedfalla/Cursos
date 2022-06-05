@@ -8,7 +8,9 @@
                 <template #graphic>
                     graphic
                 </template>
-                <template #action></template>
+                <template #action>
+                    <Action></Action>
+                </template>
             </Resume>
         </template>
         <template #movements>
@@ -22,6 +24,7 @@ import Header from './Header.vue';
 import Resume from './Resume/Index.vue';
 import Movements from './Movements/Index.vue';
 import { ref } from 'vue';
+import Action from './Action.vue';
 
 const amount = ref(2000000);
 const movements = [
