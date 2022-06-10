@@ -3,7 +3,6 @@ const currencyFormatter = new Intl.NumberFormat('es-CO',{
 });
 
 const amountCurrency = (amount)=>{
-    console.log("amount",amount);
     return currencyFormatter.format(amount)
 };
 

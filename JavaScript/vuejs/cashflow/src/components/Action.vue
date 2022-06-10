@@ -42,7 +42,7 @@
     </teleport>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref,defineEmits } from 'vue';
 import Modal from './Modal.vue';
 
 const showModal = ref(false);
@@ -50,9 +50,22 @@ const title = ref("");
 const monto = ref(0);
 const description= ref("");
 const movementsType = ref("Ingreso");
+const events = defineEmits(["create"]);
 
 const submit = ()=>{
     showModal.value = !showModal.value;
+    const movDate = new Date();
+    events("create",{
+      title:title.value,
+      description:description.value,
+      amount:monto.value * (movementsType.value!=="Ingreso"?-1:1),
+      date:movDate,
+      id:movDate.getTime()
+    });
+    title.value="";
+    description.value="";
+    monto.value=0;
+    movementsType.value ="Ingreso"
 }
 </script>
 <style scoped>

@@ -13,6 +13,7 @@
                 :y1="zero"
                 x2="300"
                 :y2="zero"></line>
+            <!-- polyline es la línea que de la gráfica -->
             <polyline
                 fill="none"
                 stroke="#0689B0"
@@ -31,10 +32,18 @@
     </div>
 </template>
 <script setup>
-import { defineProps, toRefs,computed,ref } from 'vue';
+import { defineProps, toRefs,computed,ref,watch,defineEmits } from 'vue';
 
 const showPointer = ref(false);
 const pointer = ref(0);
+const events = defineEmits(["select"]);
+
+watch(pointer,(value)=>{
+    const index = Math.ceil(value/(300/amounts.value.length));
+    if(index < 0 || index > amounts.value.length) return;
+
+    events("select",amounts.value[index - 1]);
+})
 
 const props = defineProps({
     amounts:{
@@ -51,13 +60,14 @@ const amountToPixels = (amount) => {
 
     return 200 - ((amountAbs * 100)/minmax)*2;
 };
+
 const points = computed(()=>{
     const total = amounts.value.length;
     return amounts.value.reduce((points,amount,i)=>{
         const x = (300/total) * (i+1);
         const y = amountToPixels(amount);
         return `${points} ${x},${y}`
-    },"0,100");
+    },`0 ${amountToPixels(amounts.value.length?amounts.value[0]:0)}`);
 });
 
 const zero = computed(()=>{
